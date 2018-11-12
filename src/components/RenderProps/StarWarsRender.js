@@ -1,12 +1,10 @@
 import React, { Component } from "react";
+import DataFetcher from "./DataFetcher";
+import CarListRender from "./CarsListRender";
 
-class StarWars extends Component {
+class StarWarsRender extends Component {
 	render() {
-		return (
-			<div className="star-wars-char">
-				Star Wars Render Prop Component
-			</div>
-		);
+		return <div />;
 	}
 }
-export default StarWars;
+export default StarWarsRender;

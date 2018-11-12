@@ -29,12 +29,50 @@ class App extends Component {
 				<div className="content">
 					<Switch>
 						{/* Presentational */}
-
+						<Route
+							path="/starwars_presentational"
+							component={StarWarsContainer}
+						/>
 						{/* HOC */}
+						<Route path="/starwars" component={StarWars} />
 
 						{/* Render Props */}
+						<Route
+							path="/cars_list_renderprops"
+							render={() => {
+								return (
+									<>
+										<DataFetcher
+											url="/api/cars_List/1"
+											render={(data) => {
+												return (
+													<CarListRender
+														data={data}
+													/>
+												);
+											}}
+										/>
 
+										<DataFetcher
+											url="/api/cars_List/2"
+											render={(data) => {
+												return (
+													<CarListRender
+														data={data}
+													/>
+												);
+											}}
+										/>
+									</>
+								);
+							}}
+						/>
+						<Route
+							path="/starwars_renderprops"
+							component={StarWarsRender}
+						/>
 						{/* Children */}
+						<Route path="/children_example" component={Parent} />
 					</Switch>
 				</div>
 			</div>
