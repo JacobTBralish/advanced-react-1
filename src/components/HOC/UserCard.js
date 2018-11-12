@@ -1,9 +1,22 @@
 import React, { Component } from "react";
+import myHOC from "./myHOC";
 
 class UserCard extends Component {
 	render() {
-		return <div className="user-card-container">User Card</div>;
+		const { name, id, age, favoriteColor } = this.props.data;
+		return (
+			<div className="user-card-container">
+				<div>Username: {name}</div>
+				<div>Id: {id}</div>
+				<div>Age: {age}</div>
+				<div>favoriteColor: {favoriteColor}</div>
+				<input
+					type="number"
+					onChange={(e) => this.props.updateUserId(e.target.value)}
+				/>
+			</div>
+		);
 	}
 }
 
-export default UserCard;
+export default myHOC(UserCard, "/api/user_data");
