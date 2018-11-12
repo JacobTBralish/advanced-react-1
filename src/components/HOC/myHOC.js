@@ -11,21 +11,28 @@ function myHOC(Component, url) {
 		}
 
 		getData = () => {
-			axios
-				.get(url)
-				.then((stuff) => {
-					this.setState({
-						data: stuff.data
-					});
-				})
-				.catch((err) => console.log(err));
+			axios.get(url).then((data) => {
+				this.setState({
+					data: data.data
+				});
+			});
+		};
+
+		updateUserId = (id) => {
+			this.setState({
+				data: { ...this.state.data, id }
+			});
 		};
 
 		render() {
 			return (
 				<>
 					{this.state.data ? (
-						<Component {...this.props} data={this.state.data} />
+						<Component
+							{...this.props}
+							data={this.state.data}
+							updateUserId={this.updateUserId}
+						/>
 					) : (
 						this.getData()
 					)}

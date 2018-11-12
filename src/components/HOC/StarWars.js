@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import myHOC from "./myHOC";
+import UserCard from "./UserCard";
 
 class StarWars extends Component {
 	render() {
@@ -12,7 +13,12 @@ class StarWars extends Component {
 				</div>
 			);
 		});
-		return <div>{characterList}</div>;
+		return (
+			<div>
+				<UserCard />
+				<div>{characterList}</div>
+			</div>
+		);
 	}
 }
 export default myHOC(StarWars, "https://swapi.co/api/people/");
